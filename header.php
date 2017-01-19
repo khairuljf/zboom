@@ -56,15 +56,17 @@
         <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<!--------------Header--------------->
+
 <header>
 	<div class="wrap-header zerogrid">
 		<div id="logo"><a href="<?php bloginfo('home') ?>"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/logo.png"/></a></div>
 		
+
 		<div id="search">
 			<div class="button-search"></div>
-			<input type="text" value="Search..." onfocus="if (this.value == &#39;Search...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search...&#39;;}">
+			<input type="text" name="s" value="Search..." onfocus="if (this.value == &#39;Search...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search...&#39;;}">
 		</div>
+		
 	</div>
 </header>
 
