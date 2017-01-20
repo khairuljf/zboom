@@ -10,11 +10,23 @@ Template Name: Home
 	<div class="wrap-featured zerogrid">
 		<div class="slider">
 			<div class="rslides_container">
+
+			<?php
+				$sliderstore = new WP_Query(array(
+					'post_type'=>'zbooms',
+					'posts_per_page'=>5,
+				));
+			 ?>
+
+			
 				<ul class="rslides" id="slider">
-					<li><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/slide1.png"/></li>
-					<li><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/slide2.png"/></li>
-					<li><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/slide3.png"/></li>
+					<?php while($sliderstore->have_posts()) : $sliderstore->the_post(); ?>
+						<li> <?php the_post_thumbnail();  ?> </li>
+					<?php  endwhile; ?>
 				</ul>
+			
+
+
 			</div>
 		</div>
 	</div>

@@ -6,17 +6,34 @@
 		<div class="row block03">
 			<div class="col-2-3">
 				<div class="wrap-col">
-                                    <?php while(have_posts()): the_post(); ?>
-					<article>
-						<?php the_post_thumbnail(); ?>
-                                            <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                                            
-						<div class="info">[By <?php the_author(); ?> on <?php the_time('F m, Y'); ?> December 01, 2012 with <?php comments_popup_link('No Comments','1 Comments','% Comments','',''); ?> ]</div>
-						<p><?php readmore(50); ?>
-		
-                                                </p>
-					</article>
-                                    <?php endwhile; ?>
+
+                    <?php while(have_posts()): the_post(); ?>
+						<article>
+							<?php the_post_thumbnail(); ?>
+	                                            <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+	                                            
+							<div class="info">[By <?php the_author(); ?> on <?php the_time('F m, Y'); ?> December 01, 2012 with <?php comments_popup_link('No Comments','1 Comments','% Comments','',''); ?> ]</div>
+							<p><?php readmore(50); ?>
+			
+	                                                </p>
+						</article>
+                   <?php endwhile; ?>
+
+                   	<div id="pagi">
+
+                   <?php
+
+                   	the_posts_pagination(array(
+
+                   			'prev_text'=>'PREV',
+                   			'next_text'=>'next',
+                   			'screen_reader_text'=> ' ',
+
+
+                   		));
+
+                    ?>
+					</div>
 					
 					<ul id="pagi">
 						<li><a class="current" href="#">1</a></li>
