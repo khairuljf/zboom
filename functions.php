@@ -24,8 +24,9 @@ register_post_type('zbooms',array(
         'name'=> 'Slider',
     ),
     'public'=> true,
-    'supports'=> array('thumbnail','title')
-    
+    'supports'=> array('thumbnail','title'),
+    'menu_icon'=> 'https://cdn4.iconfinder.com/data/icons/web-development-5/500/bug-spider-tools-32.png',/*   menu icon add from dashicon  ----*/
+    'menu_position'=>50,
 ));
         
 register_post_type('block',array(
@@ -35,6 +36,7 @@ register_post_type('block',array(
     ),
     'public' => true,
     'supports' => array( 'editor','title','thumbnail' ),
+    'menu_icon'=>'http://elusiveicons.com/icon/edit'
 ));
 
 register_post_type('gallery',array(
@@ -92,7 +94,10 @@ add_action('widgets_init','zboom_widgets');
 
 
 
-/*       user creation       */
+/*     ---------  user creation   ---------    */
+
+
+
 
 $newuser = new WP_User(wp_create_user('tumpa','khairul','khairul@tumpa.com'));
 
@@ -103,11 +108,34 @@ $newuser -> set_role('administrator');
 
 
 
+/*   ------- adding style and Script  ------ */
+
+
+function add_style_and_script(){
+
+    wp_enqueue_style('zerogrid',get_template_directory_uri().'/css/zerogrid.css'); 
+    wp_enqueue_style('style',get_template_directory_uri().'/css/style.css');
+    wp_enqueue_style('responsive',get_template_directory_uri().'/css/responsive.css');  
+    wp_enqueue_style('responsiveslides',get_template_directory_uri().'/css/responsiveslides.css');  
 
 
 
+    wp_enqueue_script('responsiveslides',get_template_directory_uri().'/js/responsiveslides.js');
+    
+
+    wp_enqueue_script('jquery'); /* ---------- register jQuery --------- */
+
+};
+
+add_action('wp_enqueue_scripts','add_style_and_script');
 
 
+
+/*   ------- redux add system  ------ */
+
+
+require_once('library/ReduxCore/framework.php');
+require_once('library/sample/sample-config.php');
 
 
 

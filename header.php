@@ -19,10 +19,7 @@
     
     <!-- CSS
   ================================================== -->
-  	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/zerogrid.css">
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css">
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/responsive.css">
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/responsiveslides.css" />
+ 
         <link rel="stylesheet" href=" <?php bloginfo('stylesheet_url'); ?>">
         
 	
@@ -39,11 +36,10 @@
 	<![endif]-->
 	
 	<link href='<?php echo get_template_directory_uri(); ?>/images/favicon.ico' rel='icon' type='image/x-icon'/>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/responsiveslides.js"></script>
+
 	<script>
-		$(function () {
-		  $("#slider").responsiveSlides({
+		jQuery(function () {
+		  jQuery("#slider").responsiveSlides({
 			auto: true,
 			pager: false,
 			nav: true,
@@ -57,9 +53,16 @@
 </head>
 <body <?php body_class(); ?>>
 
+<?php 
+global $rstore;
+ 
+
+
+?>
+
 <header>
 	<div class="wrap-header zerogrid">
-		<div id="logo"><a href="<?php bloginfo('home'); ?>"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/logo.png"/></a></div>
+		<div id="logo"><a href="<?php bloginfo('home'); ?>"><img src="<?php echo $rstore['logo']['url'] ?>"></a></div>
 		
 
 		<div id="search">
