@@ -129,6 +129,8 @@ function add_style_and_script(){
 
 add_action('wp_enqueue_scripts','add_style_and_script');
 
+/* ******  wp_enqueue_script for front-end &  admin_enqueue_scripts for dashboard (back-end) ****/
+
 
 
 /*   ------- redux add system  ------ */
@@ -139,6 +141,40 @@ require_once('library/sample/sample-config.php');
 
 
 
+/* shortcode adde */
+
+
+include('shortcode.php');
+
+
+/*  Custom field  meta box register   */
+
+
+function my_metabox(){
+    
+    add_meta_box('mybox','My Favarite Color','output_func','page',$context='normal');
+    add_meta_box('mybox','My Favarite sss','output_func','post',$context='normal');
+}
+
+add_action('add_meta_boxes','my_metabox');
+
+function output_func($post){ ?>
+
+    <label for="color">My Favarite ss</label>
+    <p><input type="text" name="mycolor" id="color" class="regular-text" value="<?php echo get_post_meta($post->ID,'mycolor',true) ?>"></p>
+
+
+<?php };
+
+
+
+function meta_save($post_id){
+    
+    update_post_meta($post_id,'mycolor', $_POST['mycolor']);
+    
+
+}
+add_action('save_post','meta_save');
 
 
 
@@ -148,6 +184,61 @@ require_once('library/sample/sample-config.php');
 
 
 
+
+function my_box(){
+
+    add_meta_box('favarite-food','Hello this is metabox','meta_func','page',$context='normal');
+    
+
+};
+
+
+add_action('add_meta_boxes','my_box');
+
+
+function meta_func($post){?>
+
+<label for="food">Type your Food</label>
+<input type="text" class="regular-text" id="food" name="fav" value="<?php echo get_post_meta($post->ID,'fav',true); ?>" >
+
+
+<?php };
+
+
+function data_update($post_id){
+    
+    update_post_meta($post_id,'fav',$_POST['fav']);
+}
+
+add_action('save_post','data_update');
+
+
+
+
+
+
+function my_field(){
+    
+    add_meta_box('ffood','My food','my_output','page',$context='normal');
+
+}
+
+add_action('add_meta_boxes','my_field');
+
+
+function my_output($post){?>
+    <label for="khabar"> amar Khabar</label>
+    <input type="text" name="fkhabar" id="khabar" value="<?php echo get_post_meta($post->ID,'fkhabar',true); ?>">
+
+<?php };
+
+
+function data_send($post_id){
+    update_post_meta($post_id,'fkhabar',$_POST['fkhabar']);
+}
+
+
+add_action('save_post','data_send');
 
 
 

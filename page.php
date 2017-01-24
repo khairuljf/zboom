@@ -17,6 +17,9 @@
 							Your email address will not be published. Required fields are marked *
 							<?php comments_template(); ?>
 						</div>
+
+								<?php echo get_post_meta($post->ID,'color',true); ?>
+
 					</article>
                                     <?php endwhile; ?>
 				</div>
